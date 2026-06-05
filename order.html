@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Urban Threads - Secure Checkout. Complete your purchase safely.">
+  <title>Urban Threads - Checkout</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- jQuery CDN - required for form validation and AJAX submission -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<!-- FIXED: body class changed from "contact" to "order" so correct background loads -->
+<body class="order">
+
+  <!-- ===== HEADER & NAVIGATION ===== -->
+  <header>
+    <h1>Urban Threads</h1>
+    <!-- Hamburger toggle button for mobile screens -->
+    <button id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="men.html">Men</a>
+      <a href="women.html">Women</a>
+      <a href="arrivals.html">New Arrivals</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== CHECKOUT SECTION ===== -->
+  <div class="checkout-container">
+    <div class="checkout-card">
+
+      <h2>Secure Checkout</h2>
+
+      <!-- Product name is populated from URL query params via jQuery in script.js -->
+      <div class="product-name" id="productName">Selected Product</div>
+      <!-- Product price populated from URL params -->
+      <div class="product-price" id="productPrice"></div>
+
+      <!-- Checkout form - validated and submitted via AJAX in script.js -->
+      <!-- id="orderForm" is used by jQuery -->
+      <form id="orderForm" novalidate>
+
+        <!-- Size selection -->
+        <div class="section-title">Select Size</div>
+        <select id="orderSize" required>
+          <option value="">Choose Size</option>
+          <option>XS</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+          <option>XXL</option>
+        </select>
+        <!-- Error shown by jQuery if no size selected -->
+        <span class="error-msg" id="sizeError"></span>
+
+        <!-- Customer information -->
+        <div class="section-title">Customer Information</div>
+
+        <input
+          type="text"
+          id="orderName"
+          placeholder="Full Name"
+          autocomplete="name"
+          required>
+        <span class="error-msg" id="orderNameError"></span>
+
+        <input
+          type="email"
+          id="orderEmail"
+          placeholder="Email Address"
+          autocomplete="email"
+          required>
+        <span class="error-msg" id="orderEmailError"></span>
+
+        <input
+          type="number"
+          id="orderQty"
+          placeholder="Quantity"
+          min="1"
+          value="1"
+          required>
+        <span class="error-msg" id="orderQtyError"></span>
+
+        <!-- Payment details -->
+        <div class="section-title">Payment Details</div>
+
+        <input
+          type="text"
+          id="cardNumber"
+          placeholder="Card Number (16 digits)"
+          maxlength="16"
+          autocomplete="cc-number"
+          required>
+        <span class="error-msg" id="cardError"></span>
+
+        <input
+          type="text"
+          id="expiry"
+          placeholder="Expiry Date (MM/YY)"
+          maxlength="5"
+          autocomplete="cc-exp"
+          required>
+        <span class="error-msg" id="expiryError"></span>
+
+        <input
+          type="text"
+          id="cvv"
+          placeholder="CVV (3 digits)"
+          maxlength="3"
+          autocomplete="cc-csc"
+          required>
+        <span class="error-msg" id="cvvError"></span>
+
+        <!-- Submit button - text changes to 'Processing...' during AJAX call -->
+        <button type="submit" id="orderBtn">Complete Purchase</button>
+
+      </form>
+
+      <!-- Success message displayed after AJAX order submission -->
+      <div id="orderSuccessMsg">
+        ✓ Order placed! A confirmation will be sent to your email.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>Urban Threads</h3>
+        <p>Modern fashion for every style.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Shop</h4>
+        <a href="men.html">Men</a>
+        <a href="women.html">Women</a>
+        <a href="arrivals.html">New Arrivals</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Urban Threads. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
